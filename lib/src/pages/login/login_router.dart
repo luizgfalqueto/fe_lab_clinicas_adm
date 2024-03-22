@@ -1,5 +1,5 @@
-import 'package:fe_lab_clinicas_adm/src/services/repositories/user/user_repository.dart';
-import 'package:fe_lab_clinicas_adm/src/services/repositories/user/user_repository_impl.dart';
+import 'package:fe_lab_clinicas_adm/src/repositories/user/user_repository.dart';
+import 'package:fe_lab_clinicas_adm/src/repositories/user/user_repository_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 

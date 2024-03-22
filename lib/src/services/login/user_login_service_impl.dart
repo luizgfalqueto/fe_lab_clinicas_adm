@@ -1,4 +1,4 @@
-import 'package:fe_lab_clinicas_adm/src/services/repositories/user/user_repository.dart';
+import 'package:fe_lab_clinicas_adm/src/repositories/user/user_repository.dart';
 import 'package:fe_lab_clinicas_core/fe_lab_clinicas_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
