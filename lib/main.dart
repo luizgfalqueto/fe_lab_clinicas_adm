@@ -10,6 +10,8 @@ import 'package:fe_lab_clinicas_core/fe_lab_clinicas_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 
+import 'src/pages/checkin/checkin_route.dart';
+
 void main() {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +38,7 @@ class LabClinicasAdm extends StatelessWidget {
         LoginRouter(),
         HomePageRouter(),
         PreCheckinRouter(),
+        CheckinRoute(),
       ],
     );
   }
