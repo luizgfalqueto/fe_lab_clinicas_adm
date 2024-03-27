@@ -21,13 +21,22 @@ class _CheckinPageState extends State<CheckinPage> with MessageViewMixin {
   @override
   void initState() {
     messageListener(controller);
+    effect(() {
+      if (controller.endProcess()) {
+        Navigator.of(context).pushReplacementNamed('/end-checkin');
+      }
+    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final PatientInformationFormModel(:password, :patient) =
-        controller.informationForm.watch(context)!;
+    final PatientInformationFormModel(
+      :password,
+      :patient,
+      :medicalOrder,
+      :healthInsuranceCard
+    ) = controller.informationForm.watch(context)!;
 
     var sizeOf = MediaQuery.sizeOf(context);
     return Scaffold(
@@ -162,15 +171,20 @@ class _CheckinPageState extends State<CheckinPage> with MessageViewMixin {
                 const SizedBox(
                   height: 24,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    CheckinImageLink(label: 'Carteirinha'),
+                    CheckinImageLink(
+                      label: 'Carteirinha',
+                      image: healthInsuranceCard,
+                    ),
                     Column(
                       children: [
-                        CheckinImageLink(label: 'Pedido médico 1'),
-                        CheckinImageLink(label: 'Pedido médico 2'),
-                        CheckinImageLink(label: 'Pedido médico 3'),
+                        for (final (index, order) in medicalOrder.indexed)
+                          CheckinImageLink(
+                            label: 'Pedido médico ${index + 1}',
+                            image: order,
+                          )
                       ],
                     )
                   ],
@@ -182,7 +196,9 @@ class _CheckinPageState extends State<CheckinPage> with MessageViewMixin {
                   width: double.infinity,
                   height: 48,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.endCheckin();
+                    },
                     child: const Text('FINALIZAR ATENDIMENTO'),
                   ),
                 )
