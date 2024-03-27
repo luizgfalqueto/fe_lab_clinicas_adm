@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 
 import 'src/pages/checkin/checkin_route.dart';
+import 'src/pages/end-checkin/end_checkin_router.dart';
 
 void main() {
   runZonedGuarded(() async {
@@ -39,6 +40,7 @@ class LabClinicasAdm extends StatelessWidget {
         HomePageRouter(),
         PreCheckinRouter(),
         CheckinRoute(),
+        EndCheckinRouter(),
       ],
     );
   }
