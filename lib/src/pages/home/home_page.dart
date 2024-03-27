@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> with MessageViewMixin{
     messageListener(controller);
     effect(() {
       if(controller.informationForm != null) {
-        print('Paciente carregado');
+        Navigator.of(context).pushReplacementNamed('/pre-checkin', arguments: controller.informationForm);
       }
     });
     super.initState();

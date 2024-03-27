@@ -14,12 +14,16 @@ class LabClinicasApplicationBinding extends ApplicationBindings {
   @override
   List<Bind<Object>> bindings() => [
         Bind.lazySingleton((i) => RestClient(Env.backendBaseUrl)),
+
         Bind.lazySingleton<PatientInformationFormRepository>(
             (i) => PatientInformationFormRepositoryImpl(restClient: i())),
+
         Bind.lazySingleton<AttendantDeskAssignmentRepository>(
             (i) => AttendantDeskAssignmentRepositoryImpl(restClient: i())),
+
         Bind.lazySingleton<PanelRepository>(
             (i) => PanelRepositoryImpl(restClient: i())),
+            
         Bind.lazySingleton(
           (i) => CallNextPatientService(
             patientInformationFormRepository: i(),

@@ -9,8 +9,8 @@ import '../../services/call_next_patient/call_next_patient_service.dart';
 
 class HomePageController with MessageStateMixin {
   HomePageController({
-    required attendantDeskAssignmentRepository,
-    required callNextPatientService,
+    required AttendantDeskAssignmentRepository attendantDeskAssignmentRepository,
+    required CallNextPatientService callNextPatientService,
   })  : _attendantDeskAssignmentRepository = attendantDeskAssignmentRepository,
         _callNextPatientService = callNextPatientService;
 
@@ -29,7 +29,7 @@ class HomePageController with MessageStateMixin {
         asyncstate.AsyncState.hide();
         showError('Erro ao iniciar Guichê');
       case Right():
-        final resultNextPatient = _callNextPatientService.execute();
+        final resultNextPatient = await _callNextPatientService.execute();
 
         switch (resultNextPatient) {
           case Left():
